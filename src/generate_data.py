@@ -13,9 +13,9 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Génération de scénarios hydrauliques Net3 pour GNN (fuite et baseline)")
     parser.add_argument('--inp', type=str, default='data/Net3.inp', help='Chemin du fichier INP EPANET')
     parser.add_argument('--output_dir', type=str, default='data/raw/', help='Répertoire de sortie pour les fichiers HDF5')
-    parser.add_argument('--n_scenarios', type=int, default=1000, help='Nombre de scénarios de fuite à générer')
-    parser.add_argument('--n_no_leak', type=int, default=200, help='Nombre de scénarios sans fuite (baseline)')
-    parser.add_argument('--sensor_pct', type=float, default=0.15, help='Pourcentage de jonctions équipées de capteurs virtuels')
+    parser.add_argument('--n_scenarios', type=int, default=2000, help='Nombre de scénarios de fuite à générer')
+    parser.add_argument('--n_no_leak', type=int, default=100, help='Nombre de scénarios sans fuite (baseline)')
+    parser.add_argument('--sensor_pct', type=float, default=0.25, help='Pourcentage de jonctions équipées de capteurs virtuels')
     parser.add_argument('--sim_duration', type=float, default=24.0, help='Durée de simulation en heures')
     parser.add_argument('--seed', type=int, default=42, help='Seed aléatoire pour la reproductibilité')
     parser.add_argument('--save_flows', action='store_true', help='Sauvegarder aussi les débits dans les fichiers HDF5')
@@ -106,7 +106,7 @@ def main():
         leak_pipe = np.random.choice(pipe_ids)
         leak_start = np.random.uniform(0, args.sim_duration * 3600 * 0.8)  # en secondes
         leak_duration = np.random.uniform(1*3600, 4*3600)  # 1h à 4h
-        leak_severity = np.random.uniform(0.001, 0.01)  # m2, à ajuster selon le réseau
+        leak_severity = np.random.uniform(0.01, 0.05)  # m2, Increased range (was 0.001-0.01)
 
         # Baseline
         wn_base = wntr.network.WaterNetworkModel(args.inp)

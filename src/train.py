@@ -11,7 +11,7 @@ from src.experiment_utils import get_last_experiment_id, increment_experiment_id
 
 from src.config import (
     DATA_DIR, HIDDEN_DIM, NUM_LAYERS, DROPOUT, GNN_TYPE, NORM_TYPE,
-    MLP_HIDDEN_DIM, BATCH_SIZE, NUM_EPOCHS, PATIENCE, LEARNING_RATE, WEIGHT_DECAY, GAMMA, SEED,
+    MLP_HIDDEN_DIM, BATCH_SIZE, NUM_EPOCHS, PATIENCE, LEARNING_RATE, WEIGHT_DECAY, GAMMA, ALPHA, SEED,
     DEVICE
 )
 from src import paths
@@ -48,7 +48,7 @@ def train(model, train_loader, val_loader, optimizer, scheduler, writer, experim
             # Use torchvision's sigmoid_focal_loss directly
             # Use torchvision's sigmoid_focal_loss directly
             # Note: Ensure GAMMA is defined (it is in config)
-            loss = sigmoid_focal_loss(out, batch.y.float(), gamma=GAMMA, reduction='mean')
+            loss = sigmoid_focal_loss(out, batch.y.float(), alpha=ALPHA, gamma=GAMMA, reduction='mean')
 
             # --- Debug: Check for NaNs in output/loss ---
             if torch.isnan(out).any() or torch.isinf(out).any():

@@ -12,7 +12,6 @@ EXPERIMENT_ID = "exp1"
 # Project root (absolute path)
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
-ALPHA = 0.95  # Weight for positive class in Focal Loss (0 < alpha < 1)
 # Data and paths (absolute)
 DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 LOG_DIR = os.path.join(PROJECT_ROOT, "experiments", "runs", EXPERIMENT_ID)
@@ -23,19 +22,19 @@ REGISTRY_PATH = os.path.join(PROJECT_ROOT, "experiments", "experiment_registry.c
 
 # Model hyperparameters
 HIDDEN_DIM = 128
-NUM_LAYERS = 4
+NUM_LAYERS = 3
 DROPOUT = 0.3
 GNN_TYPE = "gine"  # 'gine' or 'nnconv'
-NORM_TYPE = "batch"  # 'layer' or 'batch'
+NORM_TYPE = "layer"  # 'layer' or 'batch'
 MLP_HIDDEN_DIM = 128
 
 # Training hyperparameters
-BATCH_SIZE = 64
+BATCH_SIZE = 32
 NUM_EPOCHS = 100
 PATIENCE = 10  # Early stopping patience
 LEARNING_RATE = 1e-3
 WEIGHT_DECAY = 1e-4
-GAMMA = 3.0  # Focal loss gamma
+GAMMA = 2.5  # Focal loss gamma
 SEED = 42
 
 # Device

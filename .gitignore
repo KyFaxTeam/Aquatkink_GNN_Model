@@ -2,3 +2,6 @@
 data/processed/
 data/raw/
 data/temp/
+temp.bin
+temp.inp
+temp.rpt

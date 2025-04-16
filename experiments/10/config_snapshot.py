@@ -23,7 +23,7 @@ REGISTRY_PATH = os.path.join(PROJECT_ROOT, "experiments", "experiment_registry.c
 
 # Model hyperparameters
 HIDDEN_DIM = 128
-NUM_LAYERS = 4
+NUM_LAYERS = 3
 DROPOUT = 0.3
 GNN_TYPE = "gine"  # 'gine' or 'nnconv'
 NORM_TYPE = "batch"  # 'layer' or 'batch'
