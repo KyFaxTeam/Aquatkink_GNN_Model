@@ -1,0 +1,8 @@
+# Data
+data/processed/
+data/raw/
+data/temp/
+temp.bin
+temp.inp
+temp.rpt
+src/__pycache__/
